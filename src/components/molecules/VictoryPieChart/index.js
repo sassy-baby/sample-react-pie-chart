@@ -14,7 +14,7 @@ function VictoryPieChart() {
   }, [percent]);
 
   return (
-    <svg viewBox="0 0 400 400" width="100%" height="100%">
+    <svg viewBox="0 0 300 300" width="100%" height="100%">
       <defs>
         {/* (0.00px at 50% 0%, #FFCA28 -nan%, #20C0B6 inf%, #5AC391 inf%, #FFCA28 -nan%) */}
         <linearGradient id="gradient1" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -24,8 +24,8 @@ function VictoryPieChart() {
       </defs>
       <VictoryPie
         standalone={false}
-        width={400}
-        height={400}
+        width={300}
+        height={300}
         data={[{ x: 1, y: 100 }]}
         innerRadius={120}
         cornerRadius={25}
@@ -38,8 +38,8 @@ function VictoryPieChart() {
       />
       <VictoryPie
         standalone={false}
-        width={400}
-        height={400}
+        width={300}
+        height={300}
         data={[{ x: 1, y: percent }, { x: 2, y: 100 - percent }]}
         innerRadius={120}
         cornerRadius={25}
@@ -59,8 +59,8 @@ function VictoryPieChart() {
             <VictoryLabel
               textAnchor="middle"
               verticalAnchor="middle"
-              x={200}
-              y={200}
+              x={150}
+              y={150}
               text={`${Math.round(percent)}%`}
               style={{ fontSize: 45 }}
             />

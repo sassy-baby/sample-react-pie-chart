@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { ResponsivePie } from "@nivo/pie";
-import { linearGradientDef } from "@nivo/core";
 
 const NivoPieChart = () => {
   const [percent, setPercent] = useState(0);
@@ -8,36 +7,37 @@ const NivoPieChart = () => {
     const interval = setInterval(() => {
       percent === 100 && clearInterval(interval);
       percent < 100 && setPercent(percent + 1);
-    }, 6);
+    }, 10);
     return () => {
       clearInterval(interval);
     };
   }, [percent]);
   return (
-    <div style={{ height: 400, width: 400 }}>
+    <div style={{ height: 400, width: 400, position: "relative" }}>
       <ResponsivePie
+        style={{ position: "absolute" }}
         data={[
-          {
-            id: "main",
-            value: 1
-          }
+          { id: "main", value: percent },
+          { id: "sub", value: 100 - percent }
         ]}
-        endAngle={36 * percent}
-        cornerRadius={45}
-        colors={{ scheme: "nivo" }}
+        colors={"#f2f2f2"}
+        animate
+        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
         innerRadius={0.7}
         enableRadialLabels={false}
         enableSlicesLabels={false}
-        slicesLabelsSkipAngle={10}
         defs={[
-          linearGradientDef("gradientA", [
-            { offset: 0, color: "#FFCA28" },
-            { offset: 100, color: "#5AC391" }
-          ])
+          {
+            id: "main",
+            type: "linearGradient",
+            colors: [
+              { offset: 0, color: "#FFCA28" },
+              { offset: 100, color: "#5AC391" }
+            ]
+          }
         ]}
-        fill={[{ match: "*", id: "gradientA" }]}
+        fill={[{ match: { id: "main" }, id: "main" }]}
       />
-      <div className="Title">NivoPieChart</div>
     </div>
   );
 };

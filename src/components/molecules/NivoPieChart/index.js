@@ -4,7 +4,6 @@ import { linearGradientDef } from "@nivo/core";
 
 const NivoPieChart = () => {
   const [percent, setPercent] = useState(0);
-  // const [data, setData] = useState([{ x: 1, y: 0 }, { x: 2, y: 100 - 0 }]);
   useEffect(() => {
     const interval = setInterval(() => {
       percent === 100 && clearInterval(interval);
@@ -15,7 +14,7 @@ const NivoPieChart = () => {
     };
   }, [percent]);
   return (
-    <div style={{ height: 400 }}>
+    <div style={{ height: 400, width: 400 }}>
       <ResponsivePie
         data={[
           {

@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { RadialChart } from "react-vis";
 
-const myData = [{ angle: 80 }, { angle: 20 }];
-
 function VisPieChart() {
+  const [percent, setPercent] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      percent === 100 && clearInterval(interval);
+      percent < 100 && setPercent(percent + 1);
+    }, 1);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [percent]);
   return (
     <RadialChart
-      data={myData}
-      animation={{ damping: 9, stiffness: 300 }}
+      data={[{ angle: percent }, { angle: 100 - percent }]}
+      animation
       width={300}
       height={300}
       radius={100}

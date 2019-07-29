@@ -3,7 +3,6 @@ import { VictoryPie, VictoryAnimation, VictoryLabel } from "victory";
 
 function VictoryPieChart() {
   const [percent, setPercent] = useState(0);
-  // const [data, setData] = useState([{ x: 1, y: 0 }, { x: 2, y: 100 - 0 }]);
   useEffect(() => {
     const interval = setInterval(() => {
       percent === 100 && clearInterval(interval);

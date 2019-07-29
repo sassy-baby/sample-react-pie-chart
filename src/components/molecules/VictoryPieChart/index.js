@@ -25,10 +25,9 @@ function VictoryPieChart() {
       </defs>
       <VictoryPie
         standalone={false}
-        animate={{ duration: 1000 }}
         width={400}
         height={400}
-        data={[{ x: 1, y: 100 }, { x: 2, y: 0 }]}
+        data={[{ x: 1, y: 100 }]}
         innerRadius={120}
         cornerRadius={25}
         labels={() => null}
@@ -40,7 +39,6 @@ function VictoryPieChart() {
       />
       <VictoryPie
         standalone={false}
-        animate={{ duration: 1000 }}
         width={400}
         height={400}
         data={[{ x: 1, y: percent }, { x: 2, y: 100 - percent }]}
@@ -51,19 +49,12 @@ function VictoryPieChart() {
         style={{
           data: {
             fill: d => {
-              // const color = d.y > 30 ? "green" : "red";
               return d.x === 1 ? "url(#gradient1)" : "transparent";
             }
           }
         }}
       />
-      <VictoryAnimation
-        duration={1000}
-        data={{
-          percent,
-          data: [{ x: 1, y: percent }, { x: 2, y: 100 - percent }]
-        }}
-      >
+      <VictoryAnimation>
         {newProps => {
           return (
             <VictoryLabel

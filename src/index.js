@@ -4,6 +4,7 @@ import VictoryPieChart from "./components/molecules/VictoryPieChart";
 import NivoPieChart from "./components/molecules/NivoPieChart";
 import VisPieChart from "./components/molecules/VisPieChart";
 import VictoryLineChart from "./components/molecules/VictoryLineChart";
+import NivoLineChart from "./components/molecules/NivoLineChart";
 
 import "./styles.css";
 
@@ -29,8 +30,9 @@ function App() {
         </>
       ) : (
         <>
-          <div className="chart">
+          <div className="lineChart">
             <VictoryLineChart />
+            <NivoLineChart />
           </div>
           <button
             onClick={() => {

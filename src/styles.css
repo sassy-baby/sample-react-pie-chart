@@ -6,3 +6,7 @@
 .chart {
   display: flex;
 }
+.lineChart {
+  display: flex;
+  flex-direction: column;
+}
